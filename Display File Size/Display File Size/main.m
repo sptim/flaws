@@ -7,14 +7,15 @@ int main(int argc, const char * argv[]) {
   
   NSFileManager *fileManager=[NSFileManager defaultManager];
   
+  NSError *error;
   NSDictionary *fileAttributes=[fileManager attributesOfItemAtPath:@"/etc/hosts"
-                                                             error:NULL];
+                                                             error:&error];
   if(fileAttributes==nil){
-    NSLog(@"could not get file attributes");
+    NSLog(@"%@",error.localizedDescription);
     return 4;
   }
   else{
-    NSLog(@"Size %i bytes", [[fileAttributes objectForKey:NSFileSize]intValue]);
+    NSLog(@"Size %llu bytes", fileAttributes.fileSize);
   }
   /*** END ***/
   
