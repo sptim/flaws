@@ -5,15 +5,16 @@ int main(int argc, const char * argv[]) {
   
   /*** BEGIN ***/
   
-  NSFileManager *manager=[NSFileManager defaultManager];
+  NSFileManager *fileManager=[NSFileManager defaultManager];
   
-  NSDictionary *mydic;
-  if((mydic=[manager attributesOfItemAtPath:@"/etc/hosts" error:NULL])==nil){
+  NSDictionary *fileAttributes=[fileManager attributesOfItemAtPath:@"/etc/hosts"
+                                                             error:NULL];
+  if(fileAttributes==nil){
     NSLog(@"could not get file attributes");
     return 4;
   }
   else{
-    NSLog(@"Size %i bytes", [[mydic objectForKey:NSFileSize]intValue]);
+    NSLog(@"Size %i bytes", [[fileAttributes objectForKey:NSFileSize]intValue]);
   }
   /*** END ***/
   
