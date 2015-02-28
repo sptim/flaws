@@ -84,7 +84,7 @@
 
 - (UIImage *)blurWithImageEffects:(UIImage *)image
 {
-    return [image applyBlurWithRadius:30 tintColor:[UIColor colorWithWhite:1 alpha:0.2] saturationDeltaFactor:1.5 maskImage:nil];
+    return [image aapl_applyBlurWithRadius:30 tintColor:[UIColor colorWithWhite:1 alpha:0.2] saturationDeltaFactor:1.5 maskImage:nil];
 }
 
 - (UIImage *)blurWithCoreImage:(UIImage *)sourceImage

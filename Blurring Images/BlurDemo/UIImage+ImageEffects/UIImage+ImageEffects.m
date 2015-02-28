@@ -14,28 +14,28 @@
 @implementation UIImage (ImageEffects)
 
 
-- (UIImage *)applyLightEffect
+- (UIImage *)aapl_applyLightEffect
 {
     UIColor *tintColor = [UIColor colorWithWhite:1.0 alpha:0.3];
-    return [self applyBlurWithRadius:30 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
+    return [self aapl_applyBlurWithRadius:30 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
 }
 
 
-- (UIImage *)applyExtraLightEffect
+- (UIImage *)aapl_applyExtraLightEffect
 {
     UIColor *tintColor = [UIColor colorWithWhite:0.97 alpha:0.82];
-    return [self applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
+    return [self aapl_applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
 }
 
 
-- (UIImage *)applyDarkEffect
+- (UIImage *)aapl_applyDarkEffect
 {
     UIColor *tintColor = [UIColor colorWithWhite:0.11 alpha:0.73];
-    return [self applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
+    return [self aapl_applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
 }
 
 
-- (UIImage *)applyTintEffectWithColor:(UIColor *)tintColor
+- (UIImage *)aapl_applyTintEffectWithColor:(UIColor *)tintColor
 {
     const CGFloat EffectColorAlpha = 0.6;
     UIColor *effectColor = tintColor;
@@ -52,11 +52,11 @@
             effectColor = [UIColor colorWithRed:r green:g blue:b alpha:EffectColorAlpha];
         }
     }
-    return [self applyBlurWithRadius:10 tintColor:effectColor saturationDeltaFactor:-1.0 maskImage:nil];
+    return [self aapl_applyBlurWithRadius:10 tintColor:effectColor saturationDeltaFactor:-1.0 maskImage:nil];
 }
 
 
-- (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage
+- (UIImage *)aapl_applyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage
 {
     // Check pre-conditions.
     if (self.size.width < 1 || self.size.height < 1) {

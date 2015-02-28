@@ -11,15 +11,15 @@
 
   @interface UIImage (ImageEffects)
 
-  - (UIImage *)applyLightEffect;
-  - (UIImage *)applyExtraLightEffect;
-  - (UIImage *)applyDarkEffect;
-  - (UIImage *)applyTintEffectWithColor:(UIColor *)tintColor;
+  - (UIImage *)aapl_applyLightEffect;
+  - (UIImage *)aapl_applyExtraLightEffect;
+  - (UIImage *)aapl_applyDarkEffect;
+  - (UIImage *)aapl_applyTintEffectWithColor:(UIColor *)tintColor;
 
-  - (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius
-                         tintColor:(UIColor *)tintColor
-             saturationDeltaFactor:(CGFloat)saturationDeltaFactor
-                         maskImage:(UIImage *)maskImage;
+  - (UIImage *)aapl_applyBlurWithRadius:(CGFloat)blurRadius
+                              tintColor:(UIColor *)tintColor
+                  saturationDeltaFactor:(CGFloat)saturationDeltaFactor
+                              maskImage:(UIImage *)maskImage;
 
   @end
 /*** END ***/
