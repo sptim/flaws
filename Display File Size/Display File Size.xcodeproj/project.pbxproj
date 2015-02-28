@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B85301C1AA116DE0084AE3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B85301B1AA116DE0084AE3A /* main.m */; };
+		7B8530361AA1356E0084AE3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8530351AA1356E0084AE3A /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		7B8530181AA116DE0084AE3A /* Display File Size */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Display File Size"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B85301B1AA116DE0084AE3A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7B8530351AA1356E0084AE3A /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 		7B85301A1AA116DE0084AE3A /* Display File Size */ = {
 			isa = PBXGroup;
 			children = (
-				7B85301B1AA116DE0084AE3A /* main.m */,
+				7B8530351AA1356E0084AE3A /* main.swift */,
 			);
 			path = "Display File Size";
 			sourceTree = "<group>";
@@ -118,7 +118,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B85301C1AA116DE0084AE3A /* main.m in Sources */,
+				7B8530361AA1356E0084AE3A /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,15 +202,20 @@
 		7B8530201AA116DE0084AE3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		7B8530211AA116DE0084AE3A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -234,6 +239,7 @@
 				7B8530211AA116DE0084AE3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
