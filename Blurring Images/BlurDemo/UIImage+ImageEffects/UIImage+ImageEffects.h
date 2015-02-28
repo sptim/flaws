@@ -7,13 +7,19 @@
 
 @import UIKit;
 
-@interface UIImage (ImageEffects)
+/*** BEGIN ***/
 
-- (UIImage *)applyLightEffect;
-- (UIImage *)applyExtraLightEffect;
-- (UIImage *)applyDarkEffect;
-- (UIImage *)applyTintEffectWithColor:(UIColor *)tintColor;
+  @interface UIImage (ImageEffects)
 
-- (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage;
+  - (UIImage *)applyLightEffect;
+  - (UIImage *)applyExtraLightEffect;
+  - (UIImage *)applyDarkEffect;
+  - (UIImage *)applyTintEffectWithColor:(UIColor *)tintColor;
 
-@end
+  - (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius
+                         tintColor:(UIColor *)tintColor
+             saturationDeltaFactor:(CGFloat)saturationDeltaFactor
+                         maskImage:(UIImage *)maskImage;
+
+  @end
+/*** END ***/
