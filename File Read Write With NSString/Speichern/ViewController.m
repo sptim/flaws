@@ -12,21 +12,28 @@
 
 /*** BEGIN ***/
 
+  -(NSString*)filePath {
+    NSArray* folderPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                             NSUserDomainMask,
+                                                             YES);
+    NSString* folderPath=[folderPaths firstObject];
+    NSString* filePath=[folderPath stringByAppendingPathComponent:@"text.txt"];
+    return filePath;
+  }
+/*** END ***/
+
+/*** BEGIN ***/
+
   -(IBAction)save:(id)sender {
-    NSString *path=[NSString stringWithFormat:@"%@/Documents/text.txt",
-                    NSHomeDirectory()];
-    [self.textView.text writeToFile:path
+    [self.textView.text writeToFile:self.filePath
                          atomically:YES
                            encoding:NSUTF8StringEncoding
                               error:nil];
   }
   -(IBAction)load:(id)sender {
-    NSString *path=[NSString stringWithFormat:@"%@/Documents/text.txt",
-                    NSHomeDirectory()];
-    self.textView.text=[NSString stringWithContentsOfFile:path
+    self.textView.text=[NSString stringWithContentsOfFile:self.filePath
                                                  encoding:NSUTF8StringEncoding
                                                     error:nil];
   }
 /*** END ***/
-
 @end
