@@ -3,7 +3,20 @@
 @implementation ViewController
 @synthesize textView;
 
-#pragma mark - View lifecycle
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  [self load:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(save:)
+                                               name:@"allesSpeichern"
+                                             object:nil];
+}
+
+- (void)viewDidUnload {
+  [self setTextView:nil];
+  [super viewDidUnload];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
