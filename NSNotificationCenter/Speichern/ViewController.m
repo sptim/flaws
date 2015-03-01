@@ -3,21 +3,6 @@
 @implementation ViewController
 @synthesize textView;
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  [self load:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(save:)
-                                               name:@"allesSpeichern"
-                                             object:nil];
-}
-
-- (void)viewDidUnload {
-  [self setTextView:nil];
-  [super viewDidUnload];
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   // Return YES for supported orientations
   return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
@@ -29,31 +14,37 @@
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem=self.editButtonItem;
     [self load:self];
-  }
-  -(void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    [super setEditing:editing animated:animated];
-    if(editing) {
-      [self.textView becomeFirstResponder];
-    }
-    else {
-      [self.textView resignFirstResponder];
-    }
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(save:)
+                                                 name:@"allesSpeichern"
+                                               object:nil];
   }
 /*** END ***/
 
-/*** BEGIN ***/
+-(void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
-  -(void)textViewDidBeginEditing:(UITextView *)textView {
-    self.editing=YES;
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated {
+  [super setEditing:editing animated:animated];
+  if(editing) {
+    [self.textView becomeFirstResponder];
   }
-  -(void)textViewDidChange:(UITextView *)textView {
-    self.navigationItem.leftBarButtonItem=self.undoButtonItem;
+  else {
+    [self.textView resignFirstResponder];
   }
-  -(void)textViewDidEndEditing:(UITextView *)textView {
-    self.editing=NO;
-    [self save:self];
-  }
-/*** END ***/
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView {
+  self.editing=YES;
+}
+-(void)textViewDidChange:(UITextView *)textView {
+  self.navigationItem.leftBarButtonItem=self.undoButtonItem;
+}
+-(void)textViewDidEndEditing:(UITextView *)textView {
+  self.editing=NO;
+  [self save:self];
+}
 
 
 -(NSString*)filePath {
@@ -65,20 +56,18 @@
   return filePath;
 }
 
-/*** BEGIN ***/
+-(IBAction)save:(id)sender {
+  [self.textView.text writeToFile:self.filePath
+                       atomically:YES
+                         encoding:NSUTF8StringEncoding
+                            error:nil];
+  self.navigationItem.leftBarButtonItem=nil;
+}
 
-  -(IBAction)save:(id)sender {
-    [self.textView.text writeToFile:self.filePath
-                         atomically:YES
-                           encoding:NSUTF8StringEncoding
-                              error:nil];
-    self.navigationItem.leftBarButtonItem=nil;
-  }
-  -(IBAction)load:(id)sender {
-    self.textView.text=[NSString stringWithContentsOfFile:self.filePath
-                                                 encoding:NSUTF8StringEncoding
-                                                    error:nil];
-    self.navigationItem.leftBarButtonItem=nil;
-  }
-/*** END ***/
+-(IBAction)load:(id)sender {
+  self.textView.text=[NSString stringWithContentsOfFile:self.filePath
+                                               encoding:NSUTF8StringEncoding
+                                                  error:nil];
+  self.navigationItem.leftBarButtonItem=nil;
+}
 @end

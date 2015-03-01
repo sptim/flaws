@@ -18,10 +18,13 @@
      */
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"allesSpeichern" object:nil];
-}
+/*** BEGIN ***/
+
+  - (void)applicationDidEnterBackground:(UIApplication *)application {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"allesSpeichern"
+                                                        object:nil];
+  }
+/*** END ***/
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
