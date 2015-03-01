@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" promptedForUpgradeToXcode5="NO" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" promptedForUpgradeToXcode5="NO" initialViewController="y7P-8f-IuH">
     <dependencies>
         <deployment version="1536" identifier="iOS"/>
         <development version="5000" identifier="xcode"/>
@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Way-Nn-9Bu"/>
                         <viewControllerLayoutGuide type="bottom" id="q6A-o4-g6W"/>
@@ -20,56 +20,58 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tQY-Hq-8z4">
-                                <rect key="frame" x="20" y="28" width="280" height="146"/>
+                                <rect key="frame" x="20" y="72" width="280" height="146"/>
                                 <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="146" id="yOq-5K-1by"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="B7q-vd-Qpr"/>
+                                </connections>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3w-xA-hik">
-                                <rect key="frame" x="20" y="189" width="97" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="G4M-9q-QJa"/>
-                                </constraints>
-                                <state key="normal" title="Speichern">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="save:" destination="2" eventType="touchUpInside" id="uGa-xP-19x"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2k-C2-TSV">
-                                <rect key="frame" x="203" y="189" width="97" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="rNu-YU-84o"/>
-                                </constraints>
-                                <state key="normal" title="Laden">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="load:" destination="2" eventType="touchUpInside" id="bBB-jH-oaB"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tQY-Hq-8z4" firstAttribute="top" secondItem="Way-Nn-9Bu" secondAttribute="bottom" constant="8" symbolic="YES" id="7kI-7G-gcQ"/>
-                            <constraint firstItem="L2k-C2-TSV" firstAttribute="bottom" secondItem="h3w-xA-hik" secondAttribute="bottom" id="CqF-Xy-cTc"/>
                             <constraint firstItem="tQY-Hq-8z4" firstAttribute="leading" secondItem="3" secondAttribute="leadingMargin" constant="4" id="FYq-tt-spn"/>
-                            <constraint firstItem="L2k-C2-TSV" firstAttribute="top" secondItem="tQY-Hq-8z4" secondAttribute="bottom" constant="15" id="LVd-tk-HQe"/>
-                            <constraint firstItem="tQY-Hq-8z4" firstAttribute="leading" secondItem="h3w-xA-hik" secondAttribute="leading" id="NIM-1H-85T"/>
-                            <constraint firstItem="tQY-Hq-8z4" firstAttribute="trailing" secondItem="L2k-C2-TSV" secondAttribute="trailing" id="Ptj-9P-cVi"/>
                             <constraint firstItem="tQY-Hq-8z4" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" id="my1-xD-QJc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3WR-FT-rls">
+                        <barButtonItem key="leftBarButtonItem" systemItem="undo" id="fJ0-sH-9b6">
+                            <connections>
+                                <action selector="load:" destination="2" id="S9Y-Ss-5qy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="textView" destination="tQY-Hq-8z4" id="fZR-T9-AYH"/>
+                        <outlet property="undoButtonItem" destination="fJ0-sH-9b6" id="5kD-Qk-1TV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="837" y="374"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gpU-iQ-Dnn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y7P-8f-IuH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6r2-br-aII">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="fJA-6i-59I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kK8-o4-UTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="175" y="915"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
