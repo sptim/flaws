@@ -14,16 +14,17 @@
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem=self.editButtonItem;
     [self load:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(save:)
-                                                 name:@"allesSpeichern"
-                                               object:nil];
+    NSNotificationCenter* notificationCenter=[NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self.textView
+                           selector:@selector(resignFirstResponder)
+                               name:UIApplicationDidEnterBackgroundNotification
+                             object:nil];
+  }
+  -(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self.textView];
   }
 /*** END ***/
 
--(void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated {
   [super setEditing:editing animated:animated];
